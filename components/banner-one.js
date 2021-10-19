@@ -17,12 +17,12 @@ const BannerOne = () => {
           <Col xl={6} lg={8}>
             <div className="content-block">
               <h3>
-                Best Mobile App <br /> Template for your <br /> Business.
+                Join FresaClub
               </h3>
               <p>
-                Excepteur sint occaecat cupidatat non proident sunt in <br />
-                culpa qui officia deserunt mollit lorem ipsum anim id est <br />
-                laborum perspiciatis unde.
+              A DeFi cross-border payment and point of sale [POS] wallet <br/>
+              for unbanked community vendors. A mobile-first DeFi wallet that <br/>
+               allows sending, saving and spending - all with just a text.
               </p>
               <div className="button-block">
                 <a href="#" className="banner-btn">

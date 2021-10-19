@@ -15,13 +15,13 @@ const Footer = () => {
         <Container>
           <div className="inner-container">
             <Row>
-              <Col lg={2} md={6} sm={12}>
+              {/* <Col lg={2} md={6} sm={12}>
                 <div className="footer-widget">
                   <a href="index.html">
                     <img src={logoImage} alt="Awesome Image" />
                   </a>
                 </div>
-              </Col>
+              </Col> */}
               <Col lg={3} md={6} sm={12}>
                 <div className="footer-widget">
                   <div className="widget-title">
@@ -37,7 +37,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </Col>
-              <Col lg={2} md={6} sm={12}>
+              <Col lg={3} md={6} sm={12}>
                 <div className="footer-widget">
                   <div className="widget-title">
                     <h3>Explore</h3>
@@ -61,7 +61,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </Col>
-              <Col lg={2} md={6} sm={12}>
+              <Col lg={3} md={6} sm={12}>
                 <div className="footer-widget">
                   <div className="widget-title">
                     <h3>Links</h3>

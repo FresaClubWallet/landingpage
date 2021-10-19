@@ -3,7 +3,8 @@ import Layout from "../components/layout";
 import HeaderOne from "../components/header-one";
 import BannerOne from "../components/banner-one";
 import FunFact from "../components/funfact";
-import Services from "../components/services";
+import ServicesOne from "../components/services-one";
+import ServicesTwo from "../components/services-two";
 import FeatureOne from "../components/feature-one";
 import FeatureTwo from "../components/feature-two";
 import Pricing from "../components/pricing";
@@ -16,19 +17,20 @@ import Footer from "../components/footer";
 
 const Home = () => {
   return (
-    <Layout pageTitle="Home One">
+    <Layout pageTitle="FresaClub">
       <HeaderOne />
       <BannerOne />
       {/* <FunFact /> */}
-      {/* <Services /> */}
-      <FeatureTwo />
+      <ServicesOne />
+      {/* <FeatureTwo /> */}
       <FeatureOne />
       {/* <Pricing /> */}
       {/* <Testimonials /> */}
       {/* <Brands /> */}
-      <FAQ />
       {/* <BlogHome /> */}
+      <ServicesTwo />
       <Subscribe />
+      {/* <FAQ /> */}
       <Footer />
     </Layout>
   );

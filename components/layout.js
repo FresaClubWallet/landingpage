@@ -24,6 +24,7 @@ const Layout = ({ pageTitle, children }) => {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{pageTitle}</title>
+        <link rel="icon" href="/favicon.ico"/>
       </Head>
       <div className="page-wrapper" id="wrapper">
         {children}

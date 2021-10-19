@@ -19,29 +19,6 @@ const NavLinksInner = () => {
               <a>Home One</a>
             </Link>
           </li>
-          <li>
-            <Link href="/index-2">
-              <a>Home Two</a>
-            </Link>
-          </li>
-          {/* <li>
-            <a href="index.html">
-              Header Versions
-              <SubNavToggler />
-            </a>
-            <ul className="sub-menu">
-              <li>
-                <Link href="/">
-                  <a>Header One</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/index-2">
-                  <a>Header Two</a>
-                </Link>
-              </li>
-            </ul>
-          </li> */}
         </ul>
       </li>
       <li>

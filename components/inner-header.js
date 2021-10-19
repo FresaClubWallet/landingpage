@@ -42,10 +42,13 @@ const InnerHeader = () => {
 
   return (
     <header className="site-header header-one home-page-two">
-      <nav
+      {/* <nav
         className={`navbar navbar-expand-lg navbar-light header-navigation stricky  ${
           sticky === true ? "stricky-fixed" : " "
         }`}
+      > */}
+      <nav
+        className={`navbar navbar-expand-lg navbar-light header-navigation stricky `}
       >
         <div className="container clearfix">
           <div className="logo-box clearfix">

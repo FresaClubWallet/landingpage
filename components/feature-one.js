@@ -1,46 +1,30 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import BlockTitle from "./block-title";
 import blockTitleCircle from "../assets/images/round-circle-1-3.png";
-import mocup from "../assets/images/moc-1-2.png";
+// import mocup from "../assets/images/moc-1-3.png";
+import mocup from "../assets/images/banner-moc-3.png";
+import BlockSerice from "./block-service";
 
 const FeatureOne = () => {
   return (
-    <section className="feature-style-one">
+    <section>
       <Container>
-        <hr className="style-one" />
         <Row>
           <Col lg={6}>
             <div className="content-block">
-              <BlockTitle
+              <BlockSerice
                 textAlign="left"
-                image={blockTitleCircle}
-                title={`Powerful tools for your \n customers.`}
+                title={`No borders and \nno limits.`}
               />
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate <br /> velit
-                esse cillum dolore eu fugiat nulla pariatur.
+              FresaClub enables global payments and point of sale transactions for any food vendor, 
+              business, relative or friend in over 80 countries with just a phone number.
+              That means you can pay for churros in Spain, charge for a deep-dish pizza in Chicago, 
+              split coffee with friends in Indonesia or send money to family in Latin America, all from your phone 
+              without losing time or cash in transaction fees.
               </p>
-              <ul className="feature-lists">
-                <li>
-                  <i className="fa fa-check"></i> Refresing to get such a
-                  personal touch.{" "}
-                </li>
-                <li>
-                  <i className="fa fa-check"></i> Duis aute irure dolor in
-                  reprehenderit in voluptate.
-                </li>
-                <li>
-                  <i className="fa fa-check"></i> Velit esse cillum dolore eu
-                  fugiat nulla pariatur.
-                </li>
-              </ul>
-              <a href="#" className="feature-btn">
-                Learn More
-              </a>
             </div>
           </Col>
-
           <Col lg={6}>
             <div className="image-block">
               <img src={mocup} alt="Awesome Image" />

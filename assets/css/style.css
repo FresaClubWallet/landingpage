@@ -928,8 +928,8 @@ hr.style-one {
 */
 .blog-style-one {
   background-color: #f7fbff;
-  padding-top: 120px;
-  padding-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .blog-style-one.blog-page {
   background-color: #fff;
@@ -988,7 +988,7 @@ hr.style-one {
   opacity: 0.5;
 }
 .single-blog-style-one .text-block .meta-info {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 .single-blog-style-one .text-block .meta-info a,
 .single-blog-style-one .text-block .meta-info span {
