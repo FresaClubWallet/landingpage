@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import NavLinksInner from "./nav-links-inner";
-import logoImage from "../assets/images/logo-1-2.png";
 
 const InnerHeader = () => {
   const [sticky, setSticky] = useState(false);
