@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import Head from "next/head";
-
+import favicon from "../assets/images/favicon/fresaclub-favicon.ico"
 const Layout = ({ pageTitle, children }) => {
   const [scrollTop, setScrollTop] = useState(false);
 
@@ -24,7 +24,7 @@ const Layout = ({ pageTitle, children }) => {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{pageTitle}</title>
-        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" href={favicon}/>
       </Head>
       <div className="page-wrapper" id="wrapper">
         {children}
