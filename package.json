@@ -1,25 +1,58 @@
 {
-  "name": "fresa_landingpage",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "name": "fresa_wallet-landingpage",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "bootstrap": "^4.5.0",
-    "next": "^9.5.5",
-    "next-images": "^1.4.0",
-    "react": "^16.13.1",
-    "react-bootstrap": "^1.0.1",
-    "react-countup": "^4.3.3",
-    "react-dom": "^16.13.1",
-    "react-modal-video": "^1.2.3",
-    "react-scroll": "^1.8.0",
-    "react-visibility-sensor": "^5.1.1",
-    "swiper": "^6.0.4",
-    "typeface-roboto": "^0.0.75"
+    "@owaiswiz/use-in-view": "^1.0.16",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.5",
+    "feather-icons": "^4.28.0",
+    "framer-motion": "^4.1.5",
+    "react": "^17.0.2",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-dom": "^17.0.2",
+    "react-github-btn": "^1.2.0",
+    "react-modal": "^3.13.1",
+    "react-rnd": "^10.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.2.3",
+    "tailwindcss": "^2.1.1",
+    "twin.macro": "^2.3.3"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && netlify deploy --prod --dir=build"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "overrides": [
+      {
+        "files": [
+          "src/**/*.js"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
