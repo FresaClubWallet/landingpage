@@ -50,7 +50,7 @@ export default ({
   Our SKU/UPC feature empowers retail partners to directly push specific products to wallets, while promoting an inclusive community marketplace that saves perishable items from the landfill.\
   Custom B2C, B2B, In-Wallet AD sales, SaaS features and other revenue streams",
   primaryButtonText = "Learn More",
-  primaryButtonUrl = "https://www.canva.com/design/DAE77VxKVtc/view",
+  primaryButtonUrl = "https://www.canva.com/design/DAE77VxKVtc/view#7",
   imageSrc = StatsIllustrationSrc,
   imageCss = null,
   imageContainerCss = null,
@@ -99,7 +99,7 @@ export default ({
                 </Statistic>
               ))}
             </Statistics>
-            <PrimaryButton as="a" href={primaryButtonUrl}>
+            <PrimaryButton as="a" href={primaryButtonUrl} target="_blank">
               {primaryButtonText}
             </PrimaryButton>
           </TextContent>

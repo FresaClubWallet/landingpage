@@ -91,7 +91,7 @@ export default ({ cards = null, heading = "Our Offices", subheading = "Locations
       <ThreeColumnContainer>
         {subheading && <Subheading>{subheading}</Subheading>}
         <Heading>{heading}</Heading>
-        {description && <Description>{description}</Description>}
+        {/* {description && <Description>{description}</Description>} */}
         <VerticalSpacer />
         {cards.map((card, i) => (
           <Column key={i}>

@@ -94,7 +94,7 @@ export default ({
         <ThreeColumnContainer>
           {cards.map((card, i) => (
             <Column key={i}>
-              <Card href={card.url}>
+              <Card href={card.url} target="_blank">
                 <span className="imageContainer" css={imageContainerCss}>
                   <img src={card.imageSrc} alt="" css={imageCss} />
                 </span>

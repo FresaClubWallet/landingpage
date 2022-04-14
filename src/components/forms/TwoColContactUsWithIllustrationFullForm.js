@@ -54,7 +54,7 @@ export default ({
           <TextContent>
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
-            {description && <Description>{description}</Description>}
+            {/* {description && <Description>{description}</Description>} */}
             <Form action={formAction} method={formMethod}>
               <Input type="email" name="email" placeholder="Your Email Address" />
               <Input type="text" name="name" placeholder="Full Name" />

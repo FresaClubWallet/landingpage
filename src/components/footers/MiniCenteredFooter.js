@@ -2,7 +2,8 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import {Container as ContainerBase } from "components/misc/Layouts.js"
-import logo from "../../images/logo.svg";
+// import logo from "../../images/logo.svg";
+import logo from "../../images/favicon.png";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
@@ -36,7 +37,7 @@ export default () => {
         <Row>
           <LogoContainer>
             <LogoImg src={logo} />
-            <LogoText>Treact</LogoText>
+            <LogoText>Fresa</LogoText>
           </LogoContainer>
           <LinksContainer>
             <Link href="#">Home</Link>
@@ -57,7 +58,7 @@ export default () => {
             </SocialLink>
           </SocialLinksContainer>
           <CopyrightText>
-            &copy; Copyright 2020, Treact Inc. All Rights Reserved.
+            &copy; Copyright 2022, Fresa Inc. All Rights Reserved.
           </CopyrightText>
         </Row>
       </Content>

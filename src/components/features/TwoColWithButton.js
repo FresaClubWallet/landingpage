@@ -49,7 +49,7 @@ export default ({
   ),
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   primaryButtonText = "Learn More",
-  primaryButtonUrl = "https://www.canva.com/design/DAE77VxKVtc/view",
+  primaryButtonUrl = "https://www.canva.com/design/DAE77VxKVtc/view#4",
   imageSrc = TeamIllustrationSrc,
   buttonRounded = true,
   imageRounded = true,
@@ -74,7 +74,7 @@ export default ({
             <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
-            <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl}>
+            <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl} target="_blank">
               {primaryButtonText}
             </PrimaryButton>
           </TextContent>
