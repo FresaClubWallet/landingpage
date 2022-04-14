@@ -46,7 +46,7 @@ export default ({ headingText = "Terms And Condition" }) => {
           </HeadingRow>
           <Text>
 
-            <p>Last updated: April 21, 2020</p>
+            <p>Last updated: March 21, 2022</p>
 
             <p>Please read these terms and conditions carefully before using Our Service.</p>
 
@@ -263,7 +263,7 @@ export default ({ headingText = "Terms And Condition" }) => {
             <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
 
             <ul>
-              <li>By email: support@example.com</li>
+              <li>By email: support@fresa.inc</li>
               <li>By phone number: 408.996.1010</li>
             </ul>
           </Text>

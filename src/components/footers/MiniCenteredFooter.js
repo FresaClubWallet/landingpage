@@ -40,11 +40,10 @@ export default () => {
             <LogoText>Fresa</LogoText>
           </LogoContainer>
           <LinksContainer>
-            <Link href="#">Home</Link>
-            <Link href="#">About</Link>
-            <Link href="#">Contact Us</Link>
-            <Link href="#">Blog</Link>
-            <Link href="#">Reviews</Link>
+            <Link href="/">Home</Link>
+            <Link href="/innerPages/PrivacyPolicyPage">Privacy Policy</Link>
+            <Link href="/innerPages/TermsOfServicePage">Terms & Condition</Link>
+            <Link href="/innerPages/ContactUsPage">Contract Us</Link>
           </LinksContainer>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
