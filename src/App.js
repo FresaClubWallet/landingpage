@@ -107,7 +107,7 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
           imageCss={tw`w-20! h-20!`}
         />
         <MainFeature2
-          subheading={<Subheading>A Reputed Brand</Subheading>}
+          subheading={<Subheading></Subheading>}
           heading={<>Why <HighlightedText>Choose Us ?</HighlightedText></>}
           statistics={[
             {
