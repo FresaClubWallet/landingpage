@@ -71,8 +71,8 @@ export default ({
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
-            <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
+            <Subheading>{subheading}</Subheading>
             <Description>{description}</Description>
             <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl} target="_blank">
               {primaryButtonText}
