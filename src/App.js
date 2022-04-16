@@ -41,7 +41,7 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
     <Route path="/">
       <AnimationRevealPage>
         <Hero
-          heading={<>DeFi Cross-Border payment, remittance and Point-of-Sale extension wallet.</>}
+          heading={<>DeFi Point-of-Sale remittance wallet.</>}
           highlight="Fresa Wallet"
           description="Point-Of-Sale QR wallet with live decentralized inventory management and location features for un/underbanked food vendors and smallholder farmers.
           "
@@ -133,7 +133,7 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
           subheading={<Subheading>Our Team</Subheading>}
         />
         <DownloadApp
-          text={<>People around you are ordering delicious meals using the <HighlightedTextInverse>Fresa Wallet.</HighlightedTextInverse></>}
+          text={<>People around you are ordering delicious meals using the <HighlightedTextInverse>Fresa.</HighlightedTextInverse></>}
         />
         <SubscribeNewsLetterForm />
         <Footer />
