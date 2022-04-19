@@ -3,6 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
+import elements_3D from "images/3D_elements.png";
 
 import Header from "../headers/light.js";
 
@@ -14,7 +15,17 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/dot-pattern.svg";
 import DesignIllustration from "../../images/design-illustration.svg";
+import PowerLogoStripImage from "../../images/power-logo-strip.png";
 
+const CustomersLogoStrip = styled.div`
+  ${tw`mt-12 lg:mt-20`}
+  p {
+    ${tw`uppercase text-sm lg:text-xs tracking-wider font-bold text-gray-500`}
+  }
+  img {
+    ${tw`mt-4 w-full lg:pr-16 xl:pr-32`}
+  }
+`;
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto`;
 const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-12 flex-shrink-0 text-center lg:text-left`;
@@ -25,7 +36,7 @@ const HighlightedText = tw.span`font-black text-4xl md:text-4xl leading-snug max
 const Paragraph = tw.p`my-5 lg:my-8 text-sm lg:text-base font-medium text-gray-600 max-w-lg mx-auto lg:mx-0`;
 
 const Actions = tw.div`flex flex-col items-center sm:flex-row justify-center lg:justify-start mt-8`;
-const PrimaryButton = tw.button`font-bold px-8 lg:px-10 py-3 rounded bg-primary-500 text-gray-100 hocus:bg-primary-700 focus:shadow-outline focus:outline-none transition duration-300`;
+const PrimaryButton = tw.button`shadow-xl font-bold px-8 lg:px-10 py-3 rounded bg-primary-500 text-gray-100 hocus:bg-primary-700 focus:shadow-outline focus:outline-none transition duration-300`;
 const WatchVideoButton = styled.button`
   ${tw`mt-4 sm:mt-0 sm:ml-8 flex items-center text-secondary-300 transition duration-300 hocus:text-primary-400 focus:outline-none`}
   .playIcon {
@@ -78,7 +89,7 @@ export default ({
   return (
     <>
       <Header />
-      <Container>
+      <Container >
         <TwoColumn>
           <LeftColumn>
             <Heading>{heading}</Heading>
@@ -95,9 +106,19 @@ export default ({
                 <span className="playText">{watchVideoButtonText}</span>
               </WatchVideoButton>
             </Actions>
+            <CustomersLogoStrip>
+              <p>Powered by</p>
+              <img src={PowerLogoStripImage} alt="Our Customers" />
+            </CustomersLogoStrip>
           </LeftColumn>
           <RightColumn>
             <IllustrationContainer>
+            <img 
+                src={elements_3D}
+                className="animate-fly"
+                data-wow-delay=".75s"
+              />
+              
               <img
                 css={imageCss}
                 src={imageSrc}

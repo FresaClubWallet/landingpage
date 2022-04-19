@@ -40,11 +40,10 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
         </Route>
     <Route path="/">
       <AnimationRevealPage>
-        <Hero
+        <Hero 
           heading={<>DeFi Point-of-Sale remittance wallet.</>}
           highlight="Fresa Wallet"
-          description="Point-Of-Sale QR wallet with live decentralized inventory management and location features for un/underbanked food vendors and smallholder farmers.
-          "
+          description="Point-Of-Sale QR wallet with live decentralized inventory management and location features for un/underbanked food vendors and smallholder farmers."
           imageSrc={banner}
           imageCss={imageCss}
           imageDecoratorBlob={true}
@@ -55,7 +54,7 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
           subheading={<Subheading>This PROBLEM includes food vendors and smallholder farmers.</Subheading>}
           heading={
             <>
-              1.7 BILLION GLOBAL CITIZENS ARE UNBANKED 
+              1.7 BILLION GLOBAL CITIZENS ARE 
               <wbr /> <HighlightedText>UNBANKED.</HighlightedText>
             </>
           }

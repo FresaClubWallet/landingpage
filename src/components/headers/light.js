@@ -27,6 +27,7 @@ export const NavLink = tw.a`
 `;
 
 export const PrimaryLink = tw(NavLink)`
+  shadow-xl
   lg:mx-0
   px-8 py-3 rounded bg-primary-500 text-gray-100
   hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
@@ -71,7 +72,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
   const defaultLinks = [
-    <NavLinks key={1}>
+    <NavLinks to={1} key={1}>
       {/* <NavLink href="/#">About</NavLink>
       <NavLink href="/#">Blog</NavLink>
       <NavLink href="/#">Pricing</NavLink>
@@ -79,8 +80,8 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       <NavLink href="/#" tw="lg:ml-12!">
         Login
       </NavLink> */}
-      <NavLink href="/">Home</NavLink>
-      <NavLink href="/innerPages/PrivacyPolicyPage">Privacy Policy</NavLink>
+      <NavLink exact href="/">Home</NavLink>
+      <NavLink exact href="/innerPages/PrivacyPolicyPage">Privacy Policy</NavLink>
       <NavLink href="/innerPages/TermsOfServicePage">Terms & Condition</NavLink>
       <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/innerPages/ContactUsPage">Contract Us</PrimaryLink>
     </NavLinks>

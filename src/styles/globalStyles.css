@@ -15,3 +15,16 @@
     transform: scale(0);
     /* transform: translateY(-150%); */
 }
+
+@keyframes xx {
+    0 {transform: translate(0px,0px);}
+    55% {transform: translate(0px,20px);}
+    60% {transform: translate(0px,20px);}
+    100% {transform: translate(0px,0px);}
+  }
+
+.animate-fly {
+    animation: xx 4s infinite  alternate;
+    position: absolute;
+    right: 1.6rem;
+}
