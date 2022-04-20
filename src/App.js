@@ -132,7 +132,7 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
           subheading={<Subheading>Our Team</Subheading>}
         />
         <DownloadApp
-          text={<>People around you are ordering delicious meals using the <HighlightedTextInverse>Fresa.</HighlightedTextInverse></>}
+          text={<>People around you are ordering delicious meals using <HighlightedTextInverse>Fresa.</HighlightedTextInverse></>}
         />
         <SubscribeNewsLetterForm />
         <Footer />
