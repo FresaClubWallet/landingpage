@@ -43,7 +43,7 @@ export default () => {
             <Link href="/">Home</Link>
             <Link href="/innerPages/PrivacyPolicyPage">Privacy Policy</Link>
             <Link href="/innerPages/TermsOfServicePage">Terms & Condition</Link>
-            <Link href="/innerPages/ContactUsPage">Contract Us</Link>
+            <Link href="/innerPages/ContactUsPage">Contact Us</Link>
           </LinksContainer>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
