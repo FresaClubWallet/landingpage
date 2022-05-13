@@ -4,19 +4,20 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import mockupImageSrc from "images/app-mockup.png"
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
+import appDecorator from "images/decorator_downloadapp.png"
 import { ContentWithPaddingXl, Container as ContainerBase } from "components/misc/Layouts";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import appleIconImageSrc from "images/apple-icon.png";
 import googlePlayIconImageSrc from "images/google-play-icon.png"
 
-const Container = tw(ContainerBase)`bg-gray-900 -mx-8`
+const Container = tw(ContainerBase)`bg-primary-500 -mx-8`
 const Content = tw(ContentWithPaddingXl)``
 const Row = tw.div`px-8 flex items-center relative z-10 flex-col lg:flex-row text-center lg:text-left justify-center`;
 
 const ColumnContainer = tw.div`max-w-2xl`
 const TextContainer = tw(ColumnContainer)``;
-const Text = tw(SectionHeading)`text-gray-100 lg:text-left max-w-none text-3xl leading-snug`;
-const Subheading = tw(SubheadingBase)`text-yellow-500 mb-4 tracking-wider`
+const Text = tw(SectionHeading)`text-gray-100 lg:text-left max-w-none text-xl leading-snug`;
+const Subheading = tw(SubheadingBase)`text-white mb-4 tracking-wider text-3xl`
 
 const LinksContainer = tw.div`mt-8 lg:mt-16 flex flex-col items-center sm:block`
 const Link = styled.a`
@@ -69,8 +70,9 @@ export default ({
           </ImageContainer>
         </Row>
         <DecoratorBlobContainer>
-          <DecoratorBlob1/>
-          <DecoratorBlob2/>
+          <img src={appDecorator} alt="" tw="w-64"/>
+          {/* <DecoratorBlob1/> */}
+          {/* <DecoratorBlob2/> */}
         </DecoratorBlobContainer>
       </Content>
     </Container>
