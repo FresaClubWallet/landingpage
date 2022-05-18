@@ -4,9 +4,10 @@ FROM node:14-alpine as build
 
 WORKDIR /app
 COPY /frontend/package.json ./
-RUN npm install
+RUN npm install -g yarn
+RUN yarn
 COPY /frontend/. .
-RUN npm run build
+RUN yarn build
 
 # The second stage
 # Copy React static files and start nginx
