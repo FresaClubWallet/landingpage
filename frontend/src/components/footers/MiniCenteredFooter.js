@@ -28,9 +28,9 @@ export default () => {
           </LogoContainer>
           <LinksContainer>
             <Link href="/">Home</Link>
-            <Link href="/page/PrivacyPolicyPage">Privacy Policy</Link>
-            <Link href="/page/TermsOfServicePage">Terms & Condition</Link>
-            <Link href="/page/ContactUsPage">Contact Us</Link>
+            <Link href="/page/PrivacyPolicy">Privacy Policy</Link>
+            <Link href="/page/TermsOfService">Terms & Condition</Link>
+            <Link href="/page/ContactUs">Contact Us</Link>
           </LinksContainer>
         </Row>
       </Content>
