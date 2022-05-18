@@ -94,7 +94,7 @@ export default ({
             <Form>
               <Subheading>Subscribe to our mailing list</Subheading>
               <Input name="newsletter" type="email" placeholder="Your Email Address" />
-              <Button type="submit">Subscribe Now</Button>
+              <Button>Subscribe Now</Button>
             </Form>
             <Actions>
                <PrimaryButton as="a" href={primaryButtonUrl} target="_blank">

@@ -1,0 +1,17 @@
+version: "3"
+
+services: 
+  frontend:
+    container_name: landingpage
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./config/frontend.dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./config/nginx/development:/etc/nginx/conf.d
+      - staticfiles:/app/staticfiles
+
+volumes:
+  staticfiles:
