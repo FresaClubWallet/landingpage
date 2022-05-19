@@ -14,7 +14,9 @@ start: ## start container
 	docker-compose -f docker-compose-${DEPLOY}.yaml up -d
 restart: ## restart containter
 	docker-compose -f docker-compose-${DEPLOY}.yaml restart
-stop: ## stop & remove container
+stop: ## stop container
+	docker-compose -f docker-compose-${DEPLOY}.yaml stop
+down: ## stop & remove container
 	docker-compose -f docker-compose-${DEPLOY}.yaml down
 status: ## get status container
 	docker-compose -f docker-compose-${DEPLOY}.yaml ps
