@@ -46,12 +46,12 @@ export default ({
   heading = "Meet These Fine Folks.",
   cards = [
     {
-      imageSrc: "team-ramiro.png",
+      imageSrc: "team-ramiro.webp",
       position: "Founder - CEO",
       name: "Ramiro Arevalo Jr.",
       links: [
         {
-          url: "https://twitter.com",
+          url: "https://twitter.com/FresaClub",
           icon: TwitterIcon,
         },
         {
@@ -65,7 +65,7 @@ export default ({
       ],
     },
     {
-      imageSrc: "team-mat.png",
+      imageSrc: "team-mat.webp",
       position: "CTO - Sr.Dev/Dapp",
       name: "Mat Waller",
       links: [
@@ -84,12 +84,12 @@ export default ({
       ],
     },
     {
-      imageSrc: "team-anh.png",
+      imageSrc: "team-anh.webp",
       position: "Full Stack Dev",
       name: "Anh Nguyen",
       links: [
         {
-          url: "https://twitter.com",
+          url: "https://twitter.com/DeFasToAn1",
           icon: TwitterIcon,
         },
         {
@@ -119,7 +119,7 @@ export default ({
                 <span className="name">{card.name}</span>
                 <CardLinks>
                   {card.links.map((link, linkIndex) => (
-                    <a key={linkIndex} className="link" href={link.url} target="_blank">
+                    <a key={linkIndex} className="link" href={link.url} target="_blank" rel="noreferrer">
                       <link.icon className="icon" />
                     </a>
                   ))}

@@ -7,7 +7,7 @@ import {PrimaryButton} from "components/misc/Buttons.js";
 
 
 const Container = tw(ContainerBase)`-mx-8`
-const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
+const Content = tw.div`max-w-screen-xl mx-auto py-8 md:py-12 lg:py-16`;
 
 const Row = tw.div`flex items-center justify-center flex-col lg:flex-row px-8`
 const TextColumn = tw.div`flex items-center flex-col sm:flex-row`

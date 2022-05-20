@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-import mockupImageSrc from "images/app-mockup.png"
+import mockupImageSrc from "images/app-mockup.webp"
 import appDecorator from "images/decorator_downloadapp.png"
 import { ContentWithPaddingXl, Container as ContainerBase } from "components/misc/Layouts";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";

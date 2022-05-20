@@ -11,7 +11,7 @@ import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
 import { ReactComponent as PlayIcon } from "feather-icons/dist/icons/play-circle.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
-import DesignIllustration from "../../images/design-illustration.png";
+import DesignIllustration from "../../images/design-illustration.webp";
 import PowerLogoStripImage from "../../images/power-logo-strip.png";
 import { Subheading as SubheadingBase } from "components/misc/Headings.js";
 
@@ -21,7 +21,7 @@ const CustomersLogoStrip = styled.div`
     ${tw`uppercase text-sm lg:text-xs tracking-wider font-bold text-gray-500`}
   }
   img {
-    ${tw`mt-4 w-full lg:pr-16 xl:pr-32`}
+    ${tw`mt-4 w-full md:pr-64 xl:pr-72`}
   }
 `;
 const Container = tw.div`relative`;
@@ -29,8 +29,8 @@ const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-
 const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-12 flex-shrink-0 text-center lg:text-left`;
 const RightColumn = tw.div`relative mt-12 lg:mt-0 flex flex-col justify-center`;
 
-const Heading = tw.h1`font-black text-4xl md:text-4xl leading-snug max-w-3xl text-left`;
-const HighlightedText = tw.span`font-black text-4xl md:text-4xl leading-snug max-w-3xl text-primary-500 px-4 transform -skew-x-12`;
+const Heading = tw.h1`font-black text-3xl md:text-3xl leading-snug max-w-3xl text-left`;
+const HighlightedText = tw.span`font-black text-3xl md:text-3xl leading-snug max-w-3xl text-primary-500 px-4 transform -skew-x-12`;
 const Paragraph = tw.p`my-5 lg:my-8 text-sm lg:text-base font-medium text-gray-700 max-w-lg mx-auto lg:mx-0 text-left`;
 
 const Actions = tw.div`flex flex-col items-center sm:flex-row justify-center lg:justify-start mt-8`;

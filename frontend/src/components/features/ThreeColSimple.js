@@ -91,7 +91,7 @@ export default ({
             <Column key={i}>
               <Card href={card.url} target="_blank">
                 <span className="imageContainer" css={imageContainerCss}>
-                  <img src={card.imageSrc} alt="" css={imageCss} />
+                  <img src={card.imageSrc} alt={card.title} css={imageCss} />
                 </span>
                 <span className="title">{card.title}</span>
                 <p className="description">{card.description}</p>

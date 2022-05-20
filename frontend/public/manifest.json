@@ -1,6 +1,6 @@
 {
-  "short_name": "Treact",
-  "name": "Treact - Modern React Templates and Components for building Landing Pages",
+  "short_name": "Fresa Wallet - Defi Tools for the underbanked.  ",
+  "name": "Fresa is a decentralised marketplace bringing DeFI Point-Of-Sale tools to the marginalized.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo192.webp",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo512.webp",
       "type": "image/png",
       "sizes": "512x512"
     }
