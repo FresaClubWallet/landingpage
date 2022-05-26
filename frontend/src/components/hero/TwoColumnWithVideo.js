@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import tw from "twin.macro";
 
@@ -66,7 +66,7 @@ const StyledModal = styled(ReactModalAdapter)`
 `;
 const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-primary-500`;
 const Form = tw.form`text-sm max-w-sm sm:max-w-none mx-auto`
-const Input = tw.input`w-full sm:w-auto block sm:inline-block px-12 py-3 mt-1 rounded bg-third-500 tracking-wider font-bold  focus:border-third-500 focus:outline-none sm:rounded-r-none hover:bg-secondary-500 transition duration-300 text-gray-200`
+const Input = tw.input`w-full sm:w-auto block sm:inline-block px-12 py-3 mt-1 rounded bg-third-500 tracking-wider font-bold  focus:border-third-500 focus:outline-none sm:rounded-r-none hover:bg-secondary-500 transition duration-300 text-primary-500`
 const Button = tw(PrimaryButton)`w-full sm:w-auto mt-6 sm:mt-0 sm:rounded-l-none py-3 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-300 border border-primary-500 hocus:border-primary-700`
 const Subheading = tw(SubheadingBase)`text-center md:text-left text-black`;
 
@@ -82,6 +82,33 @@ export default ({
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
+  const [email, setEmail] = useState('');
+
+  const handleOnClick = e => {
+    e.preventDefault();
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute(process.env.REACT_APP_SITE_KEY, { action: 'submit' }).then(token => {
+        submitData(token);
+      });
+    });
+    console.log(email)
+  }
+
+  const submitData = (token) => {
+    // call a backend API to verify reCAPTCHA response
+    fetch(`${process.env.REACT_APP_BACKEND}/verify`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "email": email,
+        "g-recaptcha-response": token
+      })
+    }).then(res => res.json()).then(res => {
+      console.log(res)
+    });
+  }
 
   return (
     <>
@@ -93,8 +120,8 @@ export default ({
             <Paragraph>{description}</Paragraph>
             <Form>
               <Subheading>Subscribe to our mailing list</Subheading>
-              <Input name="newsletter" type="email" placeholder="Your Email Address" />
-              <Button>Subscribe Now</Button>
+              <Input name="newsletter" type="email" placeholder="Your Email Address" onChange={e => setEmail(e.target.value)} value={email}/>
+              <Button onClick={handleOnClick}>Subscribe Now</Button>
             </Form>
             <Actions>
                <PrimaryButton as="a" href={primaryButtonUrl} target="_blank">
@@ -115,6 +142,7 @@ export default ({
           <RightColumn>
             <IllustrationContainer>
               <img
+                fetchpriority="high"
                 css={imageCss}
                 src={imageSrc}
                 alt="Hero"

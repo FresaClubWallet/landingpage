@@ -48,7 +48,7 @@ export default () => {
           <CompanyColumn>
             <LogoContainer>
               <LogoImg src={LogoImage} />
-              <LogoText>Treact Inc.</LogoText>
+              <LogoText>Fresa Inc.</LogoText>
             </LogoContainer>
             <CompanyAddress>
               123 Road, New Startup Building
@@ -138,7 +138,7 @@ export default () => {
         </FiveColumns>
         <Divider/>
         <CopyrightAndCompanyInfoRow>
-          <CopyrightNotice>&copy; Copyright 2020, Treact Inc.</CopyrightNotice>
+          <CopyrightNotice>&copy; Copyright 2022, Fresa Inc.</CopyrightNotice>
           <CompanyInfo>An Internet Company.</CompanyInfo>
         </CopyrightAndCompanyInfoRow>
       </Content>

@@ -1,12 +1,13 @@
 {
-  "name": "fresa_wallet-landingpage",
-  "version": "0.1.0",
+  "name": "fresa_wallet-frontend",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@owaiswiz/use-in-view": "^1.0.16",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.5",
+    "dotenv": "^16.0.1",
     "feather-icons": "^4.28.0",
     "framer-motion": "^4.1.5",
     "react": "^17.0.2",

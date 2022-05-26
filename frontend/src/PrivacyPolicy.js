@@ -78,7 +78,7 @@ export default ({ headingText = "Privacy Policy" }) => {
               <li>
                 <p>
                   <strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement)
-                  refers to Treact.
+                  refers to Fresa.
                 </p>
               </li>
               <li>
@@ -91,7 +91,7 @@ export default ({ headingText = "Privacy Policy" }) => {
                 Service.
               </li>
               <li>
-                <strong>Website</strong> refers to Treact, accessible from https://treact.com
+                <strong>Website</strong> refers to Fresa, accessible from https://fresaclub.com
               </li>{" "}
               <li>
                 <strong>Service</strong> refers to the Website.

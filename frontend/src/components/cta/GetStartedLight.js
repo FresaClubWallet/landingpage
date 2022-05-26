@@ -23,7 +23,7 @@ const DecoratorBlobContainer = tw.div`absolute inset-0 overflow-hidden rounded-l
 const DecoratorBlob1 = tw(SvgDecoratorBlob1)`absolute bottom-0 left-0 w-80 h-80 transform -translate-x-20 translate-y-32 text-primary-500 opacity-5`
 const DecoratorBlob2 = tw(SvgDecoratorBlob1)`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-primary-500 opacity-5`
 export default ({
-  subheading = "Interested in Treact ?",
+  subheading = "Interested in Fresa ?",
   heading = "Join the closed beta now.",
   primaryLinkText = "Get Started",
   primaryLinkUrl = "http://timerse.com",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import tw from "twin.macro";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithVideo.js";
@@ -27,6 +27,31 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
   const HighlightedText = tw.span`text-primary-500`;
   const Description = tw.span`inline-block mt-8`;
   const imageCss = tw`rounded-4xl`;
+
+  useEffect(() => {
+    const loadScriptByURL = (id, url, callback) => {
+      const isScriptExist = document.getElementById(id);
+
+      if (!isScriptExist) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        script.id = id;
+        script.onload = function () {
+          if (callback) callback();
+        };
+        document.body.appendChild(script);
+      }
+
+      if (isScriptExist && callback) callback();
+    }
+
+    // load the script by passing the URL
+    loadScriptByURL("recaptcha-key", `https://www.google.com/recaptcha/api.js?render=${process.env.REACT_APP_SITE_KEY}`, function () {
+      console.log("Script loaded!");
+    });
+  }, []);
+
   return (
     <Router>
       <Switch>
@@ -41,7 +66,7 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
         <Hero 
           heading={<>DeFi Point-of-Sale remittance wallet.</>}
           highlight="Fresa Wallet"
-          description="A Decentralized marketplace for un/underbanked food vendors, smallholder farmers and marginalized merchants."
+          description="Fresa is a decentralized marketplace bringing DeFI Point-Of-Sale tools to the marginalized."
           imageSrc={banner}
           imageCss={imageCss}
           imageDecoratorBlob={true}

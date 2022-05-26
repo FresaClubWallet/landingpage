@@ -33,7 +33,7 @@ const ImageContainer = tw(ColumnContainer)`mt-16 lg:mt-0 lg:ml-16 flex justify-e
 const DecoratorBlobContainer = tw.div`absolute inset-0 overflow-hidden rounded-lg`
 export default ({
   subheading = "Download App",
-  text = "Developers all over the world are happily using Treact.",
+  text = "Developers all over the world are happily using Fresa.",
   link1Text = "App Store",
   link1Url = "http://apple.com",
   link1IconSrc = appleIconImageSrc,
