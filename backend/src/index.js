@@ -2,6 +2,8 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
+const compression = require('compression')
+
 const api_helper = require("./helpers/api_helper");
 
 const app = express();
@@ -18,7 +20,8 @@ app.use(
   bodyParser.json(),
   bodyParser.urlencoded({
     extended: true
-  })
+  }),
+  compression()
 );
 
 // include router
@@ -44,8 +47,9 @@ app.post('/api/verify', (req, res) => {
 const FRONTEND_BUILD_PATH = path.join(__dirname, "../../frontend/build");
 
 //  Route for frontend
-app.use(express.static(FRONTEND_BUILD_PATH));
-
+app.use(express.static(FRONTEND_BUILD_PATH, {
+  maxage: '86400000' // in milliseconds - 1 day
+}));
 // Server React frontend
 app.get('*', function(req, res) {
   res.sendFile(path.join(FRONTEND_BUILD_PATH , "index.html"));
