@@ -6,6 +6,7 @@ import {  ContentWithPaddingXl } from "components/misc/Layouts";
 import styled from "styled-components";
 import feature2 from "../../images/feature2.webp";
 import { motion } from "framer-motion";
+import LazyLoad from 'react-lazyload'
 
 const HighlightedText = tw.span`text-black`;
 
@@ -18,13 +19,15 @@ const Heading = tw(SectionHeading)`sm:text-xl md:text-2xl lg:text-3xl text-white
 
 export default () => {
   return (
-    <Container>
-      <ContentWithPaddingXl>
-        <HeadingContainer>
-          <Heading>We’re making everyone a vendor with a </Heading>
-          <Heading><HighlightedText>decentralized</HighlightedText> point of sale marketplace.</Heading>
-        </HeadingContainer>
-      </ContentWithPaddingXl>
-    </Container>
+    <LazyLoad height={200} once >
+      <Container>
+        <ContentWithPaddingXl>
+          <HeadingContainer>
+            <Heading>We’re making everyone a vendor with a </Heading>
+            <Heading><HighlightedText>decentralized</HighlightedText> point of sale marketplace.</Heading>
+          </HeadingContainer>
+        </ContentWithPaddingXl>
+      </Container>
+    </LazyLoad>
   );
 };

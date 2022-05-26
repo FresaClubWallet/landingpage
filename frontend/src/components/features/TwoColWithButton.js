@@ -8,6 +8,7 @@ import {Container as ContainerBase } from "components/misc/Layouts.js"
 import main_feature1 from "../../images/main_feature1.png"
 import main_feature2 from "../../images/main_feature2.png"
 import main_feature3 from "../../images/main_feature3.png"
+import LazyLoad from 'react-lazyload'
 
 const Container = tw(ContainerBase)`bg-fourth-500 -mx-8`
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
@@ -60,26 +61,40 @@ export default ({
     <Container>
       <TwoColumn>
         <ImageColumn>
-           <img css={imageCss} src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} alt="fresa pros"/>
+            <LazyLoad height={200}>
+              <img css={imageCss} src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} alt="fresa pros"/>
+            </LazyLoad>
           {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
             <Heading>{heading}</Heading>
             <Features>
-                <FeatureIconContainer><img alt="POS" src={main_feature1}></img></FeatureIconContainer>
+                <FeatureIconContainer>
+                  <LazyLoad height={50}>
+                    <img alt="POS" src={main_feature1}></img>
+                  </LazyLoad>
+                </FeatureIconContainer>
                 <FeatureText>
                   <FeatureDescription><FeatureHeading>Lack of access to</FeatureHeading> Point-Of-Sale technology and inventory management tools</FeatureDescription>
                 </FeatureText>
             </Features>
             <Features>
-                <FeatureIconContainer><img alt="unbanked" src={main_feature2}></img></FeatureIconContainer>
+                <FeatureIconContainer>
+                  <LazyLoad height={50}>
+                    <img alt="unbanked" src={main_feature2}></img>
+                  </LazyLoad>
+                </FeatureIconContainer>
                 <FeatureText>
                   <FeatureDescription>Unbanked farmers, vendors, and merchants have <FeatureHeading>no way to track digital payments</FeatureHeading></FeatureDescription>
                 </FeatureText>
             </Features>
             <Features>
-                <FeatureIconContainer><img alt="receipt" src={main_feature3}></img></FeatureIconContainer>
+                <FeatureIconContainer>
+                  <LazyLoad height={50}>
+                    <img alt="receipt" src={main_feature3}></img>
+                  </LazyLoad>
+                </FeatureIconContainer>
                 <FeatureText>
                   <FeatureDescription>Use of <FeatureHeading>paper receipts</FeatureHeading> to track their sales, all while doing math <FeatureHeading>on their smartphone</FeatureHeading></FeatureDescription>
                 </FeatureText>

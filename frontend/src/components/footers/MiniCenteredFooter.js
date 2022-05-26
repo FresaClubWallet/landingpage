@@ -23,7 +23,7 @@ export default () => {
       <Content>
         <Row>
           <LogoContainer>
-            <LogoImg src={logo} />
+            <LogoImg src={logo} class="w-10"/>
             <LogoText>Fresa</LogoText>
           </LogoContainer>
           <LinksContainer>

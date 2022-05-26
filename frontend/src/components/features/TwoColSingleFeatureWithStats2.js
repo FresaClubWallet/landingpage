@@ -61,7 +61,8 @@ export default ({
     <Container>
       <TwoColumn css={!imageInsideDiv && tw`md:items-center`}>
         <ImageColumn css={imageContainerCss}>
-          {imageInsideDiv ? <Image imageSrc={imageSrc} css={imageCss} /> : <img src={imageSrc} css={imageCss} alt="fresa feature" />}
+          {imageInsideDiv ? <Image imageSrc={imageSrc} css={imageCss} class="h-96 md:h-auto"/> : 
+          <img src={imageSrc} css={imageCss} alt="fresa feature" class="h-96 md:h-auto"/>}
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>

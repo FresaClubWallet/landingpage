@@ -8,6 +8,7 @@ import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
 import CustomizeIconImage from "images/customize-icon.svg";
+import LazyLoad from 'react-lazyload'
 
 const Heading = tw(SectionHeading)``;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
@@ -91,7 +92,9 @@ export default ({
             <Column key={i}>
               <Card href={card.url} target="_blank">
                 <span className="imageContainer" css={imageContainerCss}>
-                  <img src={card.imageSrc} alt={card.title} css={imageCss} />
+                  <LazyLoad height={100}>
+                    <img src={card.imageSrc} alt={card.title} css={imageCss} />
+                  </LazyLoad>
                 </span>
                 <span className="title">{card.title}</span>
                 <p className="description">{card.description}</p>

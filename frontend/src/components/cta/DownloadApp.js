@@ -7,6 +7,7 @@ import { ContentWithPaddingXl, Container as ContainerBase } from "components/mis
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import appleIconImageSrc from "images/apple-icon.png";
 import googlePlayIconImageSrc from "images/google-play-icon.png"
+import LazyLoad from 'react-lazyload'
 
 const Container = tw(ContainerBase)`bg-primary-500 -mx-8`
 const Content = tw(ContentWithPaddingXl)``
@@ -52,21 +53,29 @@ export default ({
             <Text>{text}</Text>
             <LinksContainer>
               <Link href={link1Url}>
-                <img src={link1IconSrc} alt=""/>
+                <LazyLoad height={100}>
+                  <img src={link1IconSrc} alt=""/>
+                </LazyLoad>
                 <span>{link1Text}</span>
               </Link>
               <Link href={link2Url}>
-                <img src={link2IconSrc} alt=""/>
+                <LazyLoad height={100}>
+                  <img src={link2IconSrc} alt=""/>
+                </LazyLoad>
                 <span>{link2Text}</span>
               </Link>
             </LinksContainer>
           </TextContainer>
           <ImageContainer>
-            <img src={imageSrc} alt="" tw="w-64"/>
+            <LazyLoad height={50}>
+              <img src={imageSrc} alt="" tw="w-64"/>
+            </LazyLoad>
           </ImageContainer>
         </Row>
         <DecoratorBlobContainer>
-          <img src={appDecorator} alt="" tw="w-64"/>
+          <LazyLoad height={50}>
+            <img src={appDecorator} alt="" tw="w-64"/>
+          </LazyLoad>
         </DecoratorBlobContainer>
       </Content>
     </Container>

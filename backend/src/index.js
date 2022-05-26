@@ -13,6 +13,21 @@ const https = require('https');
 
 dotenv.config();
 
+const setNoCache = (res) => {
+  const date = new Date();
+  date.setFullYear(date.getFullYear() - 1);
+  res.setHeader("Expires", date.toUTCString());
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Cache-Control", "public, no-cache");
+}
+
+const setLongTermCache = (res) => {
+  const date = new Date();
+  date.setFullYear(date.getFullYear() + 1);
+  res.setHeader("Expires", date.toUTCString());
+  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+}
+
 // enable CORS using npm package
 var cors = require('cors');
 app.use(
@@ -48,10 +63,21 @@ const FRONTEND_BUILD_PATH = path.join(__dirname, "../../frontend/build");
 
 //  Route for frontend
 app.use(express.static(FRONTEND_BUILD_PATH, {
-  maxage: '86400000' // in milliseconds - 1 day
+  extensions: ["html"],
+  setHeaders(res, path) {
+    if (path.match(/(\.html|\/sw\.js)$/)) {
+      setNoCache(res);
+      return;
+    }
+
+    if (path.match(/\.(js|css|png|jpg|jpeg|gif|ico|json|webp)$/)) {
+      setLongTermCache(res);
+    }
+  }
 }));
 // Server React frontend
 app.get('*', function(req, res) {
+  setNoCache(res);
   res.sendFile(path.join(FRONTEND_BUILD_PATH , "index.html"));
 });
 

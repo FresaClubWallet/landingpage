@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import tw from "twin.macro";
 
@@ -14,6 +14,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-
 import DesignIllustration from "../../images/design-illustration.webp";
 import PowerLogoStripImage from "../../images/power-logo-strip.png";
 import { Subheading as SubheadingBase } from "components/misc/Headings.js";
+import LazyLoad from 'react-lazyload'
 
 const CustomersLogoStrip = styled.div`
   ${tw`mt-4 lg:mt-8`}
@@ -136,17 +137,22 @@ export default ({
             </Actions>
             <CustomersLogoStrip>
               <p>Powered by</p>
-              <img src={PowerLogoStripImage} alt="Our Customers" />
+              <LazyLoad height={200}>
+                <img src={PowerLogoStripImage} alt="Our Customers" class="w-full md:pr-64 xl:pr-72"/>
+              </LazyLoad>
             </CustomersLogoStrip>
           </LeftColumn>
           <RightColumn>
             <IllustrationContainer>
-              <img
-                fetchpriority="high"
-                css={imageCss}
-                src={imageSrc}
-                alt="Hero"
-              />
+              <LazyLoad height={200}>
+                <img
+                  fetchpriority="high"
+                  css={imageCss}
+                  src={imageSrc}
+                  alt="Hero"
+                  class="max-w-3xl lg:max-w-none"
+                />
+              </LazyLoad>
             </IllustrationContainer>
           </RightColumn>
         </TwoColumn>
