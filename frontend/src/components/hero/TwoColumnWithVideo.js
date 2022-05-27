@@ -94,10 +94,12 @@ export default ({
   imageCss=null,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState(false);
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
+  const toggleModalMessage = () => setModalMessage(!modalMessage);
   const [email, setEmail] = useState('');
-
+  const [msg, setMsg] = useState('')
   const handleOnClick = e => {
     e.preventDefault();
     window.grecaptcha.ready(() => {
@@ -105,7 +107,6 @@ export default ({
         submitData(token);
       });
     });
-    console.log(email)
   }
 
   const submitData = (token) => {
@@ -119,8 +120,13 @@ export default ({
         "email": email,
         "g-recaptcha-response": token
       })
-    }).then(res => res.json()).then(res => {
-      console.log(res)
+    }).then(res => {
+        res.json()
+        console.log(res.status)
+      })
+      .then(res => {
+      setMsg(res.msg)
+      setModalMessage(true)
     });
   }
 
@@ -173,29 +179,20 @@ export default ({
         {/* <MessageModal
           closeTimeoutMS={2}
           className="mainHeroModal"
-          isOpen={modalIsOpen}
-          onRequestClose={toggleModal}
+          isOpen={modalMessage}
+          onRequestClose={toggleModalMessage}
           shouldCloseOnOverlayClick={true}
         >
-          <CloseMessageButton onClick={toggleModal}>
+          <CloseMessageButton onClick={toggleModalMessage}>
             <CloseIcon tw="w-6 h-6" />
           </CloseMessageButton>
           <div className="bg-white w-96 p-5 rounded">
           <h1 className="font-bold text-2xl text-blue-500">
-            Subscribe for our newsletter
+              
           </h1>
           <p className="py-1 text-gray-500">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos quasi
-            quibusdam pariatur? Repellendus laudantium dignissimos.
+            {msg}
           </p>
-          <input
-            placeholder="example@email.com"
-            type="email"
-            className="w-full border border-gray-500 p-1 mt-2 rounded "
-          />
-          <button className="mt-2 py-2 px-5 bg-blue-500 text-white">
-            Subscribe
-          </button>
         </div>
         </MessageModal> */}
         <StyledModal

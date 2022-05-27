@@ -27,6 +27,17 @@ const accessLogStream = FileStreamRotator.getStream({
   verbose: false
 })
 
+const accessParameterStream = () => {
+
+  const date = new Date();
+
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2,'0');
+  const dd = String(date.getDate()).padStart(2,'0');
+
+  return path.join(LOG_PATH, `parameter-${yyyy}${mm}${dd}.log`);
+}
+
 const setNoCache = (res) => {
   const date = new Date();
   date.setFullYear(date.getFullYear() - 1);
@@ -65,7 +76,7 @@ const rateLimit = require('express-rate-limit');
 const apiLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minutes
   max: 4,
-  message: {'msg': 'Too many connection'}
+  message: {'msg': 'You are too fast, please wait and try again later!'}
 });
 
 // routing
@@ -89,18 +100,19 @@ app.use(express.static(FRONTEND_BUILD_PATH, {
     }
   }
 }));
-// Server React frontend
-app.get('*', function(req, res) {
-  setNoCache(res);
-  console.log(req.headers['host'])
-  res.sendFile(path.join(FRONTEND_BUILD_PATH , "index.html"));
-});
 
 app.use((req,res,next) => {
   if (req.hostname.includes(process.env.DOMAIN)) 
     next();
   else
     res.status(403).end(`Forbidden.`);
+});
+
+// Server React frontend
+app.get('*', function(req, res) {
+  setNoCache(res);
+  console.log(req.headers['host'])
+  res.sendFile(path.join(FRONTEND_BUILD_PATH , "index.html"));
 });
 
 // Certificate
@@ -112,15 +124,39 @@ const credentials = {
 // Starting both http & https servers
 const httpsServer = https.createServer(credentials, app);
 // Redirect from http port to https
-const httpServer = http.createServer(function (req, res) {
+const httpServer = http.createServer(function (request, response) {
   try {
-    res.writeHead(301, { "Location": "https://" + req.headers['host'].replace(80,443) + req.url });
+    const { rawHeaders, httpVersion, method, socket } = request;
+    const { remoteAddress, remoteFamily } = socket;
+
+    var time = new Date,
+    dformat = [time.getMonth()+1,
+              time.getDate(),
+              time.getFullYear()].join('/')+' '+
+              [time.getHours(),
+                time.getMinutes(),
+                time.getSeconds()].join(':');
+
+    
+    response.writeHead(301, { "Location": "https://" + request.headers['host'].replace(80,443) + request.url });
     console.log("http request, will go to >> ");
-    console.log("https://" + req.headers['host'].replace(80, 443) + req.url );
-    res.end();
+    console.log("https://" + request.headers['host'].replace(80, 443) + request.url );
+    var fullUrl = request.headers['host'] + request.url
+
+    fs.appendFileSync(accessParameterStream(),
+      JSON.stringify({
+        time,
+        rawHeaders,
+        httpVersion,
+        method,
+        remoteAddress,
+        remoteFamily,
+        fullUrl
+      }) + "\n")
+    response.end();
   } catch (e) {
     // statements to handle any exceptions
-    res.end();
+    response.end();
     console.log(e)
   }
 });
