@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import tw from "twin.macro";
-import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithVideo.js";
 import Features from "components/features/ThreeColSimple.js";
 import MainFeature from "components/features/TwoColWithButton.js";
@@ -21,9 +20,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ComponentRenderer from "ComponentRenderer.js";
 import ContactUsForm from "components/forms/TwoColContactUsWithIllustrationFullForm.js";
 import FeatureStats from "components/features/ThreeColCenteredStatsPrimaryBackground.js";
+import LazyLoad from 'react-lazyload'
 
 export default function App() {
-const Subheading = tw.span`tracking-wider text-sm font-medium`;
+  const Subheading = tw.span`tracking-wider text-sm font-medium`;
+  const StyledDiv = tw.div`font-display min-h-screen text-secondary-500 p-8 overflow-hidden`;
   const HighlightedText = tw.span`text-primary-500`;
   const Description = tw.span`inline-block mt-8`;
   const imageCss = tw`rounded-4xl`;
@@ -62,7 +63,7 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
           <ComponentRenderer />
         </Route>
     <Route path="/">
-      <AnimationRevealPage>
+      <StyledDiv>
         <Hero 
           heading={<>DeFi Point-of-Sale remittance wallet.</>}
           highlight="Fresa Wallet"
@@ -73,6 +74,7 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
           primaryButtonText="Get it now"
           watchVideoButtonText="Video demo"
         />
+        <LazyLoad height={200} once ><>
         <MainFeature
           subheading={<Subheading>This PROBLEM includes food vendors and smallholder farmers.</Subheading>}
           heading={
@@ -142,7 +144,8 @@ const Subheading = tw.span`tracking-wider text-sm font-medium`;
         <SubscribeNewsLetterForm />
         <ContactUsForm/>
         <Footer />
-      </AnimationRevealPage>
+        </></LazyLoad>
+      </StyledDiv>
       </Route>
       </Switch>
     </Router>

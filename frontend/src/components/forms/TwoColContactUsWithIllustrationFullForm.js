@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useState } from 'react';
 import tw from "twin.macro";
 import styled from "styled-components";
 import { SectionHeading } from "components/misc/Headings.js";
 import contactUsIllustrationSrc from "images/contactUs.webp";
+import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import { ReactComponent as CheckIcon } from "feather-icons/dist/icons/check.svg";
+import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-80 md:h-auto`;
+const MessageModal = styled(ReactModalAdapter)`
+  &.mainHeroModal__overlay {
+    ${tw`fixed inset-0 z-50`}
+  }
+  &.mainHeroModal__content {
+    ${tw`xl:mx-auto m-4 sm:m-16 md:w-1/3 md:m-64 max-w-screen-xl absolute inset-0 flex justify-center items-center rounded-lg bg-gray-200 outline-none`}
+  }
+  .content {
+    ${tw`w-full lg:p-64`}
+  }
+`;
+const PrimaryButton = tw.button`border-2 px-10 lg:px-12 py-3 rounded-xl focus:outline-none font-medium transition duration-300 hocus:border-primary-700 border-primary-500 text-primary-500`;
+
+const CloseModalButton = tw.button`absolute top-0 right-0 mt-4 mr-4 hocus:text-primary-500`;
+const ButtonClose = tw(PrimaryButton)`w-full mt-16`;
+const ButtonSuccess = tw.button`border-2 px-1 py-1 rounded-xl bg-green-500 font-medium transition duration-300 border-green-500 text-white mr-2`;
+const ButtonError = tw.button`border-2 px-1 py-1 rounded-xl bg-red-500 font-medium transition duration-300 border-red-500 text-white mr-2`;
+
 const TextColumn = styled(Column)(props => [
   tw`md:w-7/12 mt-8 md:mt-0`,
   props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
@@ -37,8 +58,60 @@ export default ({
   formMethod = "get",
   textOnLeft = false,
 }) => {
-  // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
+  const [modalMessage, setModalMessage] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false)
 
+  const toggleModalMessage = () => setModalMessage(!modalMessage);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
+  const [msg, setMsg] = useState('')
+
+  const handleOnClick = e => {
+    e.preventDefault();
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute(process.env.REACT_APP_SITE_KEY, { action: 'submit' }).then(token => {
+        submitData(token);
+      });
+    });
+  }
+
+  const submitData = (token) => {
+    // call a backend API to verify reCAPTCHA response
+    fetch(`${process.env.REACT_APP_BACKEND}/contact/create`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "name" : name,
+        "email": email,
+        "subject": subject,
+        "message": message,
+        "g-recaptcha-response": token
+      })
+    }).then(res => {
+        if (res.status === 200) {
+          setIsSuccess(true)
+          setEmail("")
+          setName("")
+          setSubject("")
+          setMessage("")
+        } else setIsSuccess(false)
+        return res.json()
+      })
+      .then(res => {
+        setMsg(res.msg)
+        setModalMessage(true)
+      })
+      .catch(error => {
+        setIsSuccess(false)
+        setMsg("Error please try again later!")
+        setModalMessage(true)
+      });
+  }
   return (
     <Container>
       <TwoColumn>
@@ -49,13 +122,36 @@ export default ({
           <TextContent>
             <Heading>{heading}</Heading>
             <Form action={formAction} method={formMethod}>
-              <Input type="text" name="fullname" placeholder="Full name" />
-              <Input type="email" name="email" placeholder="Email" />
-              <Input type="text" name="subject" placeholder="Subject" />
-              <Textarea name="message" placeholder="Message" />
+              <Input type="text" name="fullname" placeholder="Full name" onChange={e => setName(e.target.value)} value={name}/>
+              <Input type="email" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email}/>
+              <Input type="text" name="subject" placeholder="Subject" onChange={e => setSubject(e.target.value)} value={subject}/>
+              <Textarea name="message" placeholder="Message" onChange={e => setMessage(e.target.value)} value={message}/>
             </Form>
-            <SubmitButton type="submit">{submitButtonText}</SubmitButton>
+            <SubmitButton onClick={handleOnClick} type="submit">{submitButtonText}</SubmitButton>
           </TextContent>
+          <MessageModal
+            closeTimeoutMS={2}
+            className="mainHeroModal"
+            isOpen={modalMessage}
+            onRequestClose={toggleModalMessage}
+            shouldCloseOnOverlayClick={true}
+          >
+            <CloseModalButton onClick={toggleModalMessage}>
+              <CloseIcon tw="w-6 h-6" />
+            </CloseModalButton>
+            <div className="bg-white w-96 p-5 rounded">
+            <h1 className="font-bold text-2xl text-blue-500">
+                
+            </h1>
+            <p className="py-1 text-gray-500">
+              {isSuccess ?
+                <ButtonSuccess><CheckIcon tw="w-6 h-6" /></ButtonSuccess> :
+                <ButtonError><CloseIcon tw="w-6 h-6" /></ButtonError>}
+                {msg}
+            </p>
+            <ButtonClose onClick={toggleModalMessage}>Close</ButtonClose>
+          </div>
+        </MessageModal>
         </TextColumn>
       </TwoColumn>
     </Container>

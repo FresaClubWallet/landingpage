@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 import tw from "twin.macro";
 
-
 import Header from "../headers/light.js";
 
 import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
@@ -10,6 +9,7 @@ import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
 
 import { ReactComponent as PlayIcon } from "feather-icons/dist/icons/play-circle.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import { ReactComponent as CheckIcon } from "feather-icons/dist/icons/check.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import DesignIllustration from "../../images/design-illustration.webp";
 import PowerLogoStripImage from "../../images/power-logo-strip.png";
@@ -71,18 +71,21 @@ const MessageModal = styled(ReactModalAdapter)`
     ${tw`fixed inset-0 z-50`}
   }
   &.mainHeroModal__content {
-    ${tw`xl:mx-auto m-4 sm:m-16 md:w-1/2 md:m-64 max-w-screen-xl absolute inset-0 flex justify-center items-center rounded-lg bg-gray-200 outline-none`}
+    ${tw`xl:mx-auto m-4 sm:m-16 md:w-1/3 md:m-64 max-w-screen-xl absolute inset-0 flex justify-center items-center rounded-lg bg-gray-200 outline-none`}
   }
   .content {
     ${tw`w-full lg:p-64`}
   }
 `;
-const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-primary-500`;
-const CloseMessageButton = tw.button`absolute top-0 right-0 bg-red-500 hover:bg-red-600 text-2xl w-10 h-10 rounded-full focus:outline-none text-white`;
+const CloseModalButton = tw.button`absolute top-0 right-0 mt-4 mr-4 hocus:text-primary-500`;
 const Form = tw.form`text-sm max-w-sm sm:max-w-none mx-auto`
 const Input = tw.input`w-full sm:w-auto block sm:inline-block px-12 py-3 mt-1 rounded bg-third-500 tracking-wider font-bold  focus:border-third-500 focus:outline-none sm:rounded-r-none hover:bg-secondary-500 transition duration-300 text-primary-500`
 const Button = tw(PrimaryButton)`w-full sm:w-auto mt-6 sm:mt-0 sm:rounded-l-none py-3 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-300 border border-primary-500 hocus:border-primary-700`
 const Subheading = tw(SubheadingBase)`text-center md:text-left text-black`;
+
+const ButtonClose = tw(PrimaryButton)`w-full mt-16`;
+const ButtonSuccess = tw.button`border-2 px-1 py-1 rounded-xl bg-green-500 font-medium transition duration-300 border-green-500 text-white mr-2`;
+const ButtonError = tw.button`border-2 px-1 py-1 rounded-xl bg-red-500 font-medium transition duration-300 border-red-500 text-white mr-2`;
 
 export default ({
   description="Our templates are easy to setup, understand and customize. Fully modular components with a variety of pages and components.",
@@ -95,11 +98,13 @@ export default ({
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false)
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
   const toggleModalMessage = () => setModalMessage(!modalMessage);
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState('')
+
   const handleOnClick = e => {
     e.preventDefault();
     window.grecaptcha.ready(() => {
@@ -121,13 +126,21 @@ export default ({
         "g-recaptcha-response": token
       })
     }).then(res => {
-        res.json()
-        console.log(res.status)
+        if (res.status === 200) {
+          setIsSuccess(true)
+          setEmail("")
+        } else setIsSuccess(false)
+        return res.json()
       })
       .then(res => {
-      setMsg(res.msg)
-      setModalMessage(true)
-    });
+        setMsg(res.msg)
+        setModalMessage(true)
+      })
+      .catch(error => {
+        setIsSuccess(false)
+        setMsg("Error please try again later!")
+        setModalMessage(true)
+      });
   }
 
   return (
@@ -176,25 +189,29 @@ export default ({
           </RightColumn>
         </TwoColumn>
         <DecoratorBlob1 />
-        {/* <MessageModal
+        <MessageModal
           closeTimeoutMS={2}
           className="mainHeroModal"
           isOpen={modalMessage}
           onRequestClose={toggleModalMessage}
           shouldCloseOnOverlayClick={true}
         >
-          <CloseMessageButton onClick={toggleModalMessage}>
+          <CloseModalButton onClick={toggleModalMessage}>
             <CloseIcon tw="w-6 h-6" />
-          </CloseMessageButton>
+          </CloseModalButton>
           <div className="bg-white w-96 p-5 rounded">
           <h1 className="font-bold text-2xl text-blue-500">
               
           </h1>
           <p className="py-1 text-gray-500">
-            {msg}
+            {isSuccess ?
+              <ButtonSuccess><CheckIcon tw="w-6 h-6" /></ButtonSuccess> :
+              <ButtonError><CloseIcon tw="w-6 h-6" /></ButtonError>}
+              {msg}
           </p>
+          <ButtonClose onClick={toggleModalMessage}>Close</ButtonClose>
         </div>
-        </MessageModal> */}
+        </MessageModal>
         <StyledModal
           closeTimeoutMS={300}
           className="mainHeroModal"
