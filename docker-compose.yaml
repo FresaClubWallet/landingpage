@@ -10,5 +10,7 @@ services:
       - "80:80"
       - "443:443"
     env_file: ./backend/.env
+    volumes:
+      - ./logs:/usr/src/app/backend/logs
     environment:
       NODE_ENV: production

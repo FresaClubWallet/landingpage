@@ -29,8 +29,8 @@ WORKDIR /usr/src/app/backend/
 COPY backend/package*.json ./
 RUN npm install -qy
 RUN npm install pm2 -g
-RUN npm run build
 COPY backend/ ./
+RUN npm run build
 
 EXPOSE 80 443
 
