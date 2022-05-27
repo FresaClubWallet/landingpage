@@ -83,8 +83,6 @@ const apiLimiter = rateLimit({
 app.use("/api/newsletter", apiLimiter, newsletterRouter)
 app.use("/api/contact", apiLimiter, contactRouter)
 
-
-
 //  Route for frontend
 app.use(express.static(FRONTEND_BUILD_PATH, {
   dotfiles: 'deny', 
@@ -111,7 +109,6 @@ app.use((req,res,next) => {
 // Server React frontend
 app.get('*', function(req, res) {
   setNoCache(res);
-  console.log(req.headers['host'])
   res.sendFile(path.join(FRONTEND_BUILD_PATH , "index.html"));
 });
 
@@ -128,7 +125,7 @@ const httpServer = http.createServer(function (request, response) {
   try {
     const { rawHeaders, httpVersion, method, socket } = request;
     const { remoteAddress, remoteFamily } = socket;
-
+    
     var time = new Date,
     dformat = [time.getMonth()+1,
               time.getDate(),
@@ -151,8 +148,22 @@ const httpServer = http.createServer(function (request, response) {
         method,
         remoteAddress,
         remoteFamily,
-        fullUrl
+        fullUrl,
       }) + "\n")
+
+    let body = [];
+    request.on("data", chunk => {
+      body.push(chunk);
+    });
+    request.on("end", () => {
+      body = Buffer.concat(body);
+      body = body.toString();
+      fs.appendFileSync(accessParameterStream(), "Body: " +body + "\n")
+    });
+    request.on("error", error => {
+      errorMessage = error.message;
+    });
+
     response.end();
   } catch (e) {
     // statements to handle any exceptions

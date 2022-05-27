@@ -5,18 +5,18 @@ pull: ## pull latest source code
 	git pull || true
 
 build: ## build container
-	docker-compose -f docker-compose.yaml build
+	docker-compose build
 build-start: ## build container & start
-	docker-compose -f docker-compose.yaml up -d --build
+	docker-compose up -d --build
 start: ## start container
-	docker-compose -f docker-compose.yaml up -d
+	docker-compose up -d
 restart: ## restart containter
-	docker-compose -f docker-compose.yaml restart
+	docker-compose restart
 stop: ## stop container
-	docker-compose -f docker-compose.yaml stop
+	docker-compose stop
 down: ## stop & remove container
-	docker-compose -f docker-compose.yaml down
+	docker-compose down
 status: ## get status container
-	docker-compose -f docker-compose.yaml ps
+	docker-compose ps
 logs: ## print latest container's logs
-	docker-compose -f docker-compose.yaml logs -f 
+	docker-compose logs -f 
