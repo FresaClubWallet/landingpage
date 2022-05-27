@@ -27,7 +27,7 @@
     "https-browserify": "^1.0.0",
     "mongoose": "^5.11.9",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.6",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
