@@ -28,8 +28,9 @@ RUN ls
 WORKDIR /usr/src/app/backend/
 COPY backend/package*.json ./
 RUN npm install -qy
+RUN npm install pm2 -g
 COPY backend/ ./
 
 EXPOSE 80 443
 
-CMD ["npm", "start"]
+CMD ["pm2-runtime", "dist/main.js"]

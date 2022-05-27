@@ -9,12 +9,12 @@ Newsletter.create = (newsletter, result) => {
     connection.query("INSERT INTO newsletter SET ?", newsletter, (err, res) => {
         if (err) {
           console.log("error: ", err);
-          result("error", null);
+          result({ msg: "You already register!" }, null);
           return;
         }
     
         console.log("created newsletter: ", { id: res.insertId, ...newsletter });
-        result(null, { message: "success" });
+        result(null, { msg: "success" });
       });
 };
 

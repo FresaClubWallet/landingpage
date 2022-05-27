@@ -70,7 +70,7 @@ export default ({
       name: "Mat Waller",
       links: [
         {
-          url: "https://twitter.com",
+          url: "https://twitter.com/MathewWaller8",
           icon: TwitterIcon,
         },
         {

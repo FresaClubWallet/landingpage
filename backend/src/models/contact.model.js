@@ -13,12 +13,12 @@ const Contact = function(contact) {
     connection.query("INSERT INTO contact SET ?", contact, (err, res) => {
         if (err) {
           console.log("error: ", err);
-          result("error", null);
+          result({ msg: "Can't send message!" }, null);
           return;
         }
     
         console.log("created contact: ", { id: res.insertId, ...contact });
-        result(null, { message: "success" });
+        result(null, { msg: "success" });
       });
 };
 

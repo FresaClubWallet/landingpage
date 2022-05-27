@@ -2,16 +2,30 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
-const compression = require('compression')
 
-const api_helper = require("./helpers/api_helper");
+dotenv.config();
 
 const app = express();
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
+const logger = require('morgan');
+const FileStreamRotator = require('file-stream-rotator')
+const compression = require('compression')
 
-dotenv.config();
+const FRONTEND_BUILD_PATH = path.join(__dirname, "../../frontend/build");
+const LOG_PATH = path.join(__dirname, "../logs");
+
+// ensure log directory exists
+fs.existsSync(LOG_PATH) || fs.mkdirSync(LOG_PATH)
+
+// create a rotating write stream
+const accessLogStream = FileStreamRotator.getStream({
+  date_format: 'YYYYMMDD',
+  filename: path.join(LOG_PATH, 'access-%DATE%.log'),
+  frequency: 'daily',
+  verbose: false
+})
 
 const setNoCache = (res) => {
   const date = new Date();
@@ -36,33 +50,33 @@ app.use(
   bodyParser.urlencoded({
     extended: true
   }),
-  compression()
+  compression(),
 );
+
+// setup the logger
+app.use(logger('combined', {stream: accessLogStream}))
 
 // include router
 const newsletterRouter = require("./routes/newsletter.routes")
 const contactRouter = require("./routes/contact.routes")
 
-// routing
-app.use("/api/newsletter", newsletterRouter)
-app.use("/api/contact", contactRouter)
+const rateLimit = require('express-rate-limit');
 
-
-// verify reCAPTCHA response
-app.post('/api/verify', (req, res) => {
-  var VERIFY_URL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_KEY}&response=${req.body['g-recaptcha-response']}`;
-  api_helper.make_API_call(VERIFY_URL)
-  .then(response => {
-      res.json(response)
-  })
-  .catch(error => {
-      res.send(error)
-  })
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minutes
+  max: 4,
+  message: {'msg': 'Too many connection'}
 });
-const FRONTEND_BUILD_PATH = path.join(__dirname, "../../frontend/build");
+
+// routing
+app.use("/api/newsletter", apiLimiter, newsletterRouter)
+app.use("/api/contact", apiLimiter, contactRouter)
+
+
 
 //  Route for frontend
 app.use(express.static(FRONTEND_BUILD_PATH, {
+  dotfiles: 'deny', 
   extensions: ["html"],
   setHeaders(res, path) {
     if (path.match(/(\.html|\/sw\.js)$/)) {
@@ -78,7 +92,15 @@ app.use(express.static(FRONTEND_BUILD_PATH, {
 // Server React frontend
 app.get('*', function(req, res) {
   setNoCache(res);
+  console.log(req.headers['host'])
   res.sendFile(path.join(FRONTEND_BUILD_PATH , "index.html"));
+});
+
+app.use((req,res,next) => {
+  if (req.hostname.includes(process.env.DOMAIN)) 
+    next();
+  else
+    res.status(403).end(`Forbidden.`);
 });
 
 // Certificate
@@ -91,10 +113,16 @@ const credentials = {
 const httpsServer = https.createServer(credentials, app);
 // Redirect from http port to https
 const httpServer = http.createServer(function (req, res) {
-  res.writeHead(301, { "Location": "https://" + req.headers['host'].replace(80,443) + req.url });
-  console.log("http request, will go to >> ");
-  console.log("https://" + req.headers['host'].replace(80, 443) + req.url );
-  res.end();
+  try {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'].replace(80,443) + req.url });
+    console.log("http request, will go to >> ");
+    console.log("https://" + req.headers['host'].replace(80, 443) + req.url );
+    res.end();
+  } catch (e) {
+    // statements to handle any exceptions
+    res.end();
+    console.log(e)
+  }
 });
 
 httpsServer.listen(443, () => {

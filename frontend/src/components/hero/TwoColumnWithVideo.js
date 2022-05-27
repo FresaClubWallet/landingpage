@@ -65,7 +65,20 @@ const StyledModal = styled(ReactModalAdapter)`
     ${tw`w-full lg:p-16`}
   }
 `;
+
+const MessageModal = styled(ReactModalAdapter)`
+  &.mainHeroModal__overlay {
+    ${tw`fixed inset-0 z-50`}
+  }
+  &.mainHeroModal__content {
+    ${tw`xl:mx-auto m-4 sm:m-16 md:w-1/2 md:m-64 max-w-screen-xl absolute inset-0 flex justify-center items-center rounded-lg bg-gray-200 outline-none`}
+  }
+  .content {
+    ${tw`w-full lg:p-64`}
+  }
+`;
 const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-primary-500`;
+const CloseMessageButton = tw.button`absolute top-0 right-0 bg-red-500 hover:bg-red-600 text-2xl w-10 h-10 rounded-full focus:outline-none text-white`;
 const Form = tw.form`text-sm max-w-sm sm:max-w-none mx-auto`
 const Input = tw.input`w-full sm:w-auto block sm:inline-block px-12 py-3 mt-1 rounded bg-third-500 tracking-wider font-bold  focus:border-third-500 focus:outline-none sm:rounded-r-none hover:bg-secondary-500 transition duration-300 text-primary-500`
 const Button = tw(PrimaryButton)`w-full sm:w-auto mt-6 sm:mt-0 sm:rounded-l-none py-3 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-300 border border-primary-500 hocus:border-primary-700`
@@ -97,7 +110,7 @@ export default ({
 
   const submitData = (token) => {
     // call a backend API to verify reCAPTCHA response
-    fetch(`${process.env.REACT_APP_BACKEND}/verify`, {
+    fetch(`${process.env.REACT_APP_BACKEND}/newsletter/create`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -157,6 +170,34 @@ export default ({
           </RightColumn>
         </TwoColumn>
         <DecoratorBlob1 />
+        {/* <MessageModal
+          closeTimeoutMS={2}
+          className="mainHeroModal"
+          isOpen={modalIsOpen}
+          onRequestClose={toggleModal}
+          shouldCloseOnOverlayClick={true}
+        >
+          <CloseMessageButton onClick={toggleModal}>
+            <CloseIcon tw="w-6 h-6" />
+          </CloseMessageButton>
+          <div className="bg-white w-96 p-5 rounded">
+          <h1 className="font-bold text-2xl text-blue-500">
+            Subscribe for our newsletter
+          </h1>
+          <p className="py-1 text-gray-500">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos quasi
+            quibusdam pariatur? Repellendus laudantium dignissimos.
+          </p>
+          <input
+            placeholder="example@email.com"
+            type="email"
+            className="w-full border border-gray-500 p-1 mt-2 rounded "
+          />
+          <button className="mt-2 py-2 px-5 bg-blue-500 text-white">
+            Subscribe
+          </button>
+        </div>
+        </MessageModal> */}
         <StyledModal
           closeTimeoutMS={300}
           className="mainHeroModal"

@@ -5,3 +5,4 @@ build
 ssl
 dist
 .env
+logs
