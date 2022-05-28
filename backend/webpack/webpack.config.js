@@ -42,7 +42,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   target:'node',
   watch: false,
   plugins: [

@@ -21,6 +21,7 @@ import ComponentRenderer from "ComponentRenderer.js";
 import ContactUsForm from "components/forms/TwoColContactUsWithIllustrationFullForm.js";
 import FeatureStats from "components/features/ThreeColCenteredStatsPrimaryBackground.js";
 import LazyLoad from 'react-lazyload'
+import Header from "./components/headers/light";
 
 export default function App() {
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
@@ -64,6 +65,8 @@ export default function App() {
         </Route>
     <Route path="/">
       <StyledDiv>
+        <Header />
+        <LazyLoad height={200} throttle={100}><>
         <Hero 
           heading={<>DeFi Point-of-Sale remittance wallet.</>}
           highlight="Fresa Wallet"
@@ -74,7 +77,6 @@ export default function App() {
           primaryButtonText="Get it now"
           watchVideoButtonText="Video demo"
         />
-        <LazyLoad height={200} once ><>
         <MainFeature
           subheading={<Subheading>This PROBLEM includes food vendors and smallholder farmers.</Subheading>}
           heading={

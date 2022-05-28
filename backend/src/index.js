@@ -11,7 +11,7 @@ const http = require('http');
 const https = require('https');
 const logger = require('morgan');
 const FileStreamRotator = require('file-stream-rotator')
-const compression = require('compression')
+const expressStaticGzip = require("express-static-gzip");
 
 const FRONTEND_BUILD_PATH = path.join(__dirname, "../../frontend/build");
 const LOG_PATH = path.join(__dirname, "../logs");
@@ -60,8 +60,7 @@ app.use(
   bodyParser.json(),
   bodyParser.urlencoded({
     extended: true
-  }),
-  compression(),
+  })
 );
 
 // setup the logger
@@ -84,18 +83,11 @@ app.use("/api/newsletter", apiLimiter, newsletterRouter)
 app.use("/api/contact", apiLimiter, contactRouter)
 
 //  Route for frontend
-app.use(express.static(FRONTEND_BUILD_PATH, {
-  dotfiles: 'deny', 
-  extensions: ["html"],
+app.use(expressStaticGzip(FRONTEND_BUILD_PATH, {
+  enableBrotli: true,
+  orderPreference: ["br", "gz"],
   setHeaders(res, path) {
-    if (path.match(/(\.html|\/sw\.js)$/)) {
-      setNoCache(res);
-      return;
-    }
-
-    if (path.match(/\.(js|css|png|jpg|jpeg|gif|ico|json|webp)$/)) {
-      setLongTermCache(res);
-    }
+    setLongTermCache(res)
   }
 }));
 

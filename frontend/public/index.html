@@ -5,12 +5,13 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
+      rel="preload"
     />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
     <title>Fresa Wallet - Defi Tools for the underbanked.</title>
     <meta name="title" content="Fresa Wallet - Defi Tools for the underbanked.">
     <meta name="description" content="Fresa is a decentralised marketplace bringing DeFI Point-Of-Sale tools to the marginalized.">
@@ -45,12 +46,12 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBCQQZ8F68"></script>
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-VBCQQZ8F68"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-VBCQQZ8F68');
-  </script>
+  </script> 
 </html>

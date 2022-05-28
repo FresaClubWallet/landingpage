@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 import tw from "twin.macro";
 
-import Header from "../headers/light.js";
 
 import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
@@ -22,7 +21,7 @@ const CustomersLogoStrip = styled.div`
     ${tw`uppercase text-sm lg:text-xs tracking-wider font-bold text-gray-500`}
   }
   img {
-    ${tw`mt-4 w-full md:pr-64 xl:pr-72`}
+    ${tw`mt-4 w-full sm:pr-72 md:pr-64 xl:pr-72`}
   }
 `;
 const Container = tw.div`relative`;
@@ -31,7 +30,7 @@ const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-12 flex-shrink-0 text-center 
 const RightColumn = tw.div`relative mt-12 lg:mt-0 flex flex-col justify-center`;
 
 const Heading = tw.h1`font-black text-3xl md:text-3xl leading-snug max-w-3xl text-left`;
-const HighlightedText = tw.span`font-black text-3xl md:text-3xl leading-snug max-w-3xl text-primary-500 px-4 transform -skew-x-12`;
+const HighlightedText = tw.span`font-black text-3xl md:text-3xl leading-snug max-w-3xl text-primary-500 px-2 transform -skew-x-12`;
 const Paragraph = tw.p`my-5 lg:my-8 text-sm lg:text-base font-medium text-gray-700 max-w-lg mx-auto lg:mx-0 text-left`;
 
 const Actions = tw.div`flex flex-col items-center sm:flex-row justify-center lg:justify-start mt-8`;
@@ -47,7 +46,7 @@ const WatchVideoButton = styled.button`
   }
 `;
 
-const IllustrationContainer = tw.div`mt-4 flex justify-center md:justify-end items-center relative max-w-3xl lg:max-w-none`;
+const IllustrationContainer = tw.div`mt-8 flex justify-center md:justify-end items-center relative max-w-3xl lg:max-w-none `;
 
 // Random Decorator Blobs (shapes that you see in background)
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
@@ -79,7 +78,7 @@ const MessageModal = styled(ReactModalAdapter)`
 `;
 const CloseModalButton = tw.button`absolute top-0 right-0 mt-4 mr-4 hocus:text-primary-500`;
 const Form = tw.form`text-sm max-w-sm sm:max-w-none mx-auto`
-const Input = tw.input`w-full sm:w-auto block sm:inline-block px-12 py-3 mt-1 rounded bg-third-500 tracking-wider font-bold  focus:border-third-500 focus:outline-none sm:rounded-r-none hover:bg-secondary-500 transition duration-300 text-primary-500`
+const Input = tw.input`w-full sm:w-auto block sm:inline-block px-8 py-3 mt-1 rounded bg-third-500 tracking-wider font-bold  focus:border-third-500 focus:outline-none sm:rounded-r-none hover:bg-secondary-500 transition duration-300 text-primary-500`
 const Button = tw(PrimaryButton)`w-full sm:w-auto mt-6 sm:mt-0 sm:rounded-l-none py-3 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-300 border border-primary-500 hocus:border-primary-700`
 const Subheading = tw(SubheadingBase)`text-center md:text-left text-black`;
 
@@ -92,7 +91,7 @@ export default ({
   primaryButtonText="Get Started",
   primaryButtonUrl="https://www.figma.com/proto/OP8fckKtfDJ0MWtc5aAHxz/Fresa?node-id=352%3A2&scaling=scale-down&page-id=88%3A2&starting-point-node-id=352%3A2",
   watchVideoButtonText="Watch Video",
-  watchVideoYoutubeUrl="https://www.youtube.com/watch?v=215Fn7eHT9c",
+  watchVideoYoutubeUrl="https://www.youtube.com/embed/215Fn7eHT9c",
   imageSrc=DesignIllustration,
   imageCss=null,
 }) => {
@@ -145,7 +144,6 @@ export default ({
 
   return (
     <>
-      <Header />
       <Container >
         <TwoColumn>
           <LeftColumn>
