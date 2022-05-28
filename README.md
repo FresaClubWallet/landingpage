@@ -6,6 +6,8 @@
 - Include self-signed SSL certificate ([Let's Encrypt localhost](https://letsencrypt.org/docs/certificates-for-localhost/) format)
 - You can use make command to build fast
 
+## Table of contents
+
 - [Host requirements](#reqts)
 - [Configuration](#config)
 - [Deploy](#deploy)
