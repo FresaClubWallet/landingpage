@@ -64,8 +64,6 @@ docker-compose down
 
 ## <a name="notes"></a>Notes
 
-General information regarding standard Docker deployment of WordPress for reference purposes
-
 ### Let's Encrypt SSL Certificate
 
 Use: [https://github.com/RENCI-NRIG/ez-letsencrypt](https://github.com/RENCI-NRIG/ez-letsencrypt) - A shell script to obtain and renew [Let's Encrypt](https://letsencrypt.org/) certificates using Certbot's `--webroot` method of [certificate issuance](https://certbot.eff.org/docs/using.html#webroot).
