@@ -44,7 +44,7 @@ const ButtonError = tw.button`border-2 px-1 py-1 rounded-xl bg-red-500 font-medi
 const CloseModalButton = tw.button`absolute top-0 right-0 mt-4 mr-4 hocus:text-primary-500`;
 
 export default () => {
-  const toggleModalMessage = () => setModalMessage(!modalMessage);
+const toggleModalMessage = () => setModalMessage(!modalMessage);
 const [email, setEmail] = useState('');
 const [msg, setMsg] = useState('')
 const [modalMessage, setModalMessage] = useState(false);

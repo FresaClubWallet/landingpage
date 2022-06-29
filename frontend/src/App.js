@@ -118,19 +118,22 @@ export default function App() {
               imageSrc: why1,
               title: "Cross Border Remittance",
               description: "Merchants and consumers don't lose money on foreign exchange transactions as Fresa utilises the power of stablecoins combined with the speed of the Celo network.",
-              url: "https://www.figma.com/proto/OP8fckKtfDJ0MWtc5aAHxz/Fresa?node-id=352%3A1005&scaling=scale-down&page-id=88%3A2&starting-point-node-id=352%3A2"
+              url: "https://www.figma.com/proto/OP8fckKtfDJ0MWtc5aAHxz/Fresa?node-id=352%3A1005&scaling=scale-down&page-id=88%3A2&starting-point-node-id=352%3A2",
+              type: "cross"
             },
             {
               imageSrc: why2,
               title: "Mobile native wallet",
               description: "Merchants and customers have their Celo stablecoin digital currency stored on a convenient mobile native wallet authenticated by a cell phone number.",
-              url: "https://www.figma.com/proto/OP8fckKtfDJ0MWtc5aAHxz/Fresa?node-id=352%3A1005&scaling=scale-down&page-id=88%3A2&starting-point-node-id=352%3A2"
+              url: "https://www.figma.com/proto/OP8fckKtfDJ0MWtc5aAHxz/Fresa?node-id=352%3A1005&scaling=scale-down&page-id=88%3A2&starting-point-node-id=352%3A2",
+              type: "mobile"
             },
             {
               imageSrc: why3,
               title: "Foodwaste prevention",
               description: "Merchants push specific items to wallets to save perishable items from landfills.",
-              url: "https://www.figma.com/proto/OP8fckKtfDJ0MWtc5aAHxz/Fresa?node-id=352%3A1005&scaling=scale-down&page-id=88%3A2&starting-point-node-id=352%3A2"
+              url: "https://www.figma.com/proto/OP8fckKtfDJ0MWtc5aAHxz/Fresa?node-id=352%3A1005&scaling=scale-down&page-id=88%3A2&starting-point-node-id=352%3A2",
+              type: "food"
             }
           ]}
 
